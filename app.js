@@ -86,12 +86,10 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-app.get("/", (req, res) => {
-  res.send("HI, there I am root");
-});
 
-app.get("/listings", (req, res) => {
-  res.send("Here are the listings.");
+// Root redirect
+app.get("/", (req, res) => {
+  res.redirect("/listings");
 });
 
 // Catch-all 404 route
