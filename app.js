@@ -109,7 +109,6 @@ app.listen(PORT, () => {
 });
 
 const fs = require("fs");
-const path = require("path");
 
 const uploadPath = path.join(__dirname, "public/uploads");
 
