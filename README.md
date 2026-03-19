@@ -140,23 +140,23 @@ http://localhost:8080
 ## 📸 Screenshots
 
 ### 🏠 Listings Page
-![Listings](screenshots/listings.png)
+![Listings](screenshots/listings.PNG)
 
 ### 📄 Listing Details
-![Listing](screenshots/listing.png)
+![Listing](screenshots/listing.PNG)
 
 ### ➕ Create/Edit Listing
-![Create](screenshots/new-listing.png)
-![Edit](screenshots/edit-listing.png)
+![Create](screenshots/new-listing.PNG)
+![Edit](screenshots/edit-listing.PNG)
 
 ### 📅 Booking Summary
-![Preview](screenshots/preview.png)
+![Preview](screenshots/preview.PNG)
 
 ### 💳 Payment Page
-![Payment](screenshots/payment.png)
+![Payment](screenshots/payment.PNG)
 
 ### ✅ Confirmation Page
-![Confirmation](screenshots/confirmation.png)
+![Confirmation](screenshots/confirmation.PNG)
 
 ---
 
