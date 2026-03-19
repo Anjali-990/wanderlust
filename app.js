@@ -1,3 +1,4 @@
+require("dotenv").config(); // Load .env variables
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -6,7 +7,7 @@ const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
 const ExpressError = require("./utils/ExpressError");
-//for login
+// for login
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
@@ -17,7 +18,9 @@ const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
 const reservationRoutes = require("./routes/reservation.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// MongoDB connection string from .env
+const MONGO_URL =
+  process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust";
 
 // Connect to MongoDB
 main()
@@ -27,8 +30,12 @@ main()
   .catch((err) => {
     console.error("Error connecting to DB:", err);
   });
+
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 }
 
 app.set("view engine", "ejs");
@@ -39,70 +46,55 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-//to access images in browser
+// to access images in browser
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// Session configuration using .env secret
 const sessionOptions = {
-  secret: "mysecretcode",
+  secret: process.env.SESSION_SECRET || "defaultsecret",
   resave: false,
   saveUninitialized: true,
   cookie: {
     expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 1week
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
     httpOnly: true,
   },
 };
 
-app.get("/", (req, res) => {
-  res.send("HI, there I am root");
-});
-
 app.use(session(sessionOptions));
 app.use(flash());
 
-//for login &authentication
+// Passport authentication setup
 app.use(passport.initialize());
 app.use(passport.session());
 
-// use static authenticate method of model in LocalStrategy
 passport.use(new LocalStrategy(User.authenticate()));
-
-// use static serialize and deserialize of model function that is used by Passport to serialize users into the session & to deserialize users into the session.
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// Make user info & flash messages available in EJS
 app.use((req, res, next) => {
-  res.locals.currUser = req.user; // Makes currUser available in EJS
+  res.locals.currUser = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
 });
 
-//register(user, password, cb) Convenience method to register a new user instance with a given password. Checks if username is unique.
-//app.get("/demouser", async (req, res) => {
-//  let fakeUser = new User({
-//    email: "student@gmail.com",
-//    username: "delta-student",
-//  });
-//  let registerUser = await User.register(fakeUser, "helloworld");
-//  res.send(registerUser);
-//});
-
-// your routes AFTER session middleware
-app.use("/reservations", reservationRoutes); // Use the reservation route
+// Routes
+app.use("/reservations", reservationRoutes);
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
+app.get("/", (req, res) => {
+  res.send("HI, there I am root");
+});
+
 app.get("/listings", (req, res) => {
   res.send("Here are the listings.");
 });
-// Handle 404 errors
-app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something went wrong!" } = err;
-  res.status(statusCode).render("error.ejs", { message });
-});
-// Catch-all route for undefined paths
+
+// Catch-all 404 route
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not found!"));
 });
@@ -112,8 +104,9 @@ app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong!" } = err;
   res.status(statusCode).render("error.ejs", { message });
 });
-// Start the server
-app.listen(8080, () => {
-  console.log("Server is listening to port 8080");
-});
 
+// Start server with dynamic port (Render provides PORT)
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
