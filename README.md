@@ -3,6 +3,10 @@
 A full-stack web application inspired by Airbnb where users can create, edit, and explore property listings with images, reviews, and amenities.
 
 ---
+### 🚀 Live Demo
+
+ * URL:- https://wanderlust-gtsc.onrender.com
+---
 
 ## 🚀 Features
 
@@ -42,6 +46,16 @@ Implemented a complete multi-step booking workflow:
 * **File Upload:** Multer
 
 ---
+
+## 🌐 Deployment
+This project is deployed using:
+
+- Backend & Hosting: Render  
+- Database: MongoDB Atlas  
+
+---
+
+
 
 ## 📂 Project Structure
 
@@ -113,7 +127,7 @@ npm install
    Create a `.env` file and add:
 
 ```
-MONGO_URL=mongodb://127.0.0.1:27017/wanderlust
+MONGO_URL=your_mongodb_atlas_connection_string
 SESSION_SECRET=your_secret_key
 ```
 
