@@ -48,10 +48,6 @@ temp/
 
 .vscode/
 
-# Uploads (ignore user-uploaded images)
-
-public/uploads/
-
 # Build files (if added later)
 
 dist/
