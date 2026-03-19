@@ -113,7 +113,7 @@ npm install
    Create a `.env` file and add:
 
 ```
-MONGO_URL=your_mongodb_connection_string
+MONGO_URL=mongodb://127.0.0.1:27017/wanderlust
 SESSION_SECRET=your_secret_key
 ```
 
@@ -140,23 +140,23 @@ http://localhost:8080
 ## 📸 Screenshots
 
 ### 🏠 Listings Page
-![Listings](./screenshots/listings.png)
+![Listings](screenshots/listings.png)
 
 ### 📄 Listing Details
-![Listing](./screenshots/listing.png)
+![Listing](screenshots/listing.png)
 
 ### ➕ Create/Edit Listing
-![Create](./screenshots/new-listing.png)
-![Edit](./screenshots/edit-listing.png)
+![Create](screenshots/new-listing.png)
+![Edit](screenshots/edit-listing.png)
 
 ### 📅 Booking Summary
-![Preview](./screenshots/preview.png)
+![Preview](screenshots/preview.png)
 
 ### 💳 Payment Page
-![Payment](./screenshots/payment.png)
+![Payment](screenshots/payment.png)
 
 ### ✅ Confirmation Page
-![Confirmation](./screenshots/confirmation.png)
+![Confirmation](screenshots/confirmation.png)
 
 ---
 
