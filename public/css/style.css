@@ -1,0 +1,457 @@
+/* =========================
+   BASE STYLES
+========================= */
+body {
+  background-color:white !important; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  flex: 1;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+a,
+.nav-link {
+  color: #fff !important;
+}
+a:hover,
+.nav-link:hover {
+  color: #68dacd !important;
+  transition: color 0.3s ease;
+}
+
+.navbar {
+  height: 5rem;
+  background-color: #1d3557;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-size: 2rem !important;
+}
+.navbar-brand:hover {
+  color: #68dacd;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+/* Search button */
+#search {
+  background-color: #e63946; /* Coral Red CTA */
+  color: #000;
+}
+
+/* Search dropdown "All" */
+.all-search {
+  background-color: #68dacd !important;
+  color: #000 !important;
+}
+.drop-bar {
+  background-color: #37547c !important; /* background for dropdown menu */
+}
+
+.drop-bar .dropdown-item {
+  color: white !important;             /* make all links white */
+  transition: all 0.3s ease-in-out;
+}
+
+.drop-bar .dropdown-item:hover {
+  color: #68dacd !important;           /* text color on hover */
+  background-color: transparent !important; /* remove Bootstrap's blue bg */
+}
+
+/* Smooth transition for search input */
+#search-bar .form-control {
+  transition: all 0.4s ease-in-out;
+  width: 200px; /* default width */
+}
+
+/* Expand search when focused (desktop only) */
+#search-bar .form-control:focus {
+  width: 400px;
+  box-shadow: 0 0 8px rgba(42, 157, 143, 0.6); /* teal glow */
+  border-color: #2a9d8f;
+}
+
+/* Auth links (login/logout/signup) */
+#login,
+#logout,
+#signup {
+  color: white !important;
+  transition: color 0.3s ease;
+}
+#login i,
+#logout i,
+#signup i {
+  color: white !important;
+  transition: color 0.3s ease;
+}
+
+/* Hover state: icon + text together */
+#login:hover,
+#login:hover i,
+#logout:hover,
+#logout:hover i {
+  color: #68dacd !important;
+}
+#signup:hover,
+#signup:hover i {
+  color: #e63946 !important;
+}
+
+/* Nav links default + hover */
+.navbar-nav .nav-link,
+.navbar-nav .nav-link i {
+  color: white !important;
+  transition: color 0.3s ease;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:hover i {
+  color: #68dacd !important;
+}
+
+/* Nav icons */
+.fa-caravan,
+.fa-plus {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.fa-user-plus,
+.fa-sign-in-alt,
+.fa-door-open {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* =========================
+   LISTINGS
+========================= */
+/* Title in navy for trust/pro feel */
+.listing-title {
+  color: #1d3557;
+}
+/* Price in teal for theme */
+.listing-price {
+  color: teal;
+  font-weight: 500;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.f-info {
+  text-align: center;
+  height: 8rem;
+  background-color: #1d3557;
+  color: #ffffff;
+  display: flex;
+  padding: 1.5rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+}
+.f-info-socials i {
+  margin: 0 12px;
+  color: #ffffff;
+  font-size: 1.6rem;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.f-info-socials i:hover {
+  color: #68dacd; /* teal hover */
+}
+/* Brand Text */
+.f-info-brand {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+/* Footer Links */
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-info-links a {
+  margin: 0 10px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.f-info-links a:hover {
+  text-decoration: underline;
+  color: #68dacd;
+}
+/*signup & login page*/
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem; /* soft rounded corners */
+}
+/*buttons*/
+#sign-up,
+#log-in {
+  background-color: #e63946;
+  color: white;
+}
+#sign-up:hover,
+#log-in:hover {
+  background-color: #bd1f1f;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+#signup-h1,
+#login-h1 {
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  color: #1d3557;
+}
+
+#login-h1::after,
+#signup-h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #2a9d8f;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+#username,
+#email,
+#password {
+  border: 1px solid #a8dadc;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease-in-out;
+}
+#username:focus,
+#email:focus,
+#password:focus {
+  border-color: #2a9d8f;
+  box-shadow: 0 0 5px rgba(42, 157, 143, 0.4);
+}
+
+/* =========================
+   CARDS
+========================= */
+.listing-card .card-body {
+  padding: 0.5rem 0.75rem !important; /* reduce top/bottom padding */
+}
+
+.listing-title {
+  margin-top: 0.3rem; /* optional fine-tuning */
+  font-size: 1rem;
+}
+
+.listing-price {
+  font-size: 0.9rem;
+  color: #007bff; /* or your theme color */
+}
+.listing-card {
+  border: none !important;
+  margin-bottom: 2rem;
+}
+.listing-card {
+  overflow: hidden; /* ensures image doesn’t spill outside rounded card */
+  border-radius: 1rem;
+}
+
+.card-img-top {
+  border-radius: 1rem;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+.card-text {
+  font-weight: 400 !important;
+}
+.listing-link {
+  text-decoration: none;
+}
+
+/* Card overlay effect */
+.card-img-overlay {
+  opacity: 0;
+}
+.card-img-overlay:hover {
+  opacity: 0.3;
+  background-color: whitesmoke;
+}
+
+/* Add button */
+.add-btn {
+  background-color: #fe424d !important;
+  border: #f03e4a !important;
+}
+
+/* =========================
+   SHOW PAGE
+========================= */
+.show-img {
+  height: 30vh;
+}
+.btns {
+  display: flex;
+}
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+.log-in {
+  text-decoration: none;
+}
+
+/* =========================
+   NAVBAR FIXES (NEW)
+========================= */
+
+/* Hamburger (toggler) icon → make visible (white) */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Keep search bar in navbar */
+#search-bar {
+  max-width: 600px;
+  flex-grow: 1;
+}
+
+/* On large screens: animated width */
+@media (min-width: 992px) {
+  #search-bar .form-control {
+    width: 200px;
+  }
+  #search-bar .form-control:focus {
+    width: 400px;
+  }
+}
+
+/* On small screens: search bar full width */
+@media (max-width: 991px) {
+  #search-bar {
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
+  #search-bar .form-control {
+    width: 100% !important;
+  }
+}
+/* Common styles for login / signup page links */
+a.login-link,
+a.sign-up-link {
+  color: #37547c !important; /* Force dark text */
+  font-weight: 500;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a.login-link:hover,
+a.sign-up-link:hover {
+  color: #2c81ff !important; /* Bootstrap primary blue */
+  text-decoration: underline;
+}
+
+/* =========================
+   LISTING FORM (matches site theme)
+========================= */
+.listing-form {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-top: 1rem;
+}
+
+/* Title */
+.listing-form h3 {
+  font-weight: 600;
+  color: #1d3557;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.listing-form h3::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #2a9d8f;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* Labels */
+.listing-form .form-label {
+  font-weight: 500;
+  color: #1d3557;
+}
+
+/* Inputs / textarea */
+.listing-form .form-control {
+  border: 1px solid #a8dadc;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease-in-out;
+  padding: 0.65rem 1rem;
+}
+
+.listing-form .form-control:focus {
+  border-color: #2a9d8f;
+  box-shadow: 0 0 6px rgba(42, 157, 143, 0.4);
+}
+
+/* File input */
+.listing-form input[type="file"] {
+  padding: 0.4rem;
+}
+
+/* Group inline fields (price + country) */
+.listing-form .inline-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .listing-form .inline-fields {
+    grid-template-columns: 1fr; /* stack on mobile */
+  }
+}
+
+/* Add button */
+.listing-form .add-btn {
+  width: 100%;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background-color: #e63946 !important;
+  border: none !important;
+  transition: background 0.3s ease;
+}
+
+.listing-form .add-btn:hover {
+  background-color: #bd1f1f !important;
+}

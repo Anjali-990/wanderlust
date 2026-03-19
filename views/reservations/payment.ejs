@@ -1,0 +1,245 @@
+<% layout("/layouts/boilerplate") -%>
+<!--breadcrumb-->
+<div class="stepper">
+  <div class="step done">
+    <i class="fa-solid fa-book-open me-1"></i>
+    <span class="step-text">Listing</span>
+  </div>
+  <div class="step done">
+    <i class="fa-solid fa-clipboard-check me-1"></i>
+    <span class="step-text">Preview</span>
+  </div>
+  <div class="step active">
+    <i class="fas fa-wallet me-1"></i>
+    <span class="step-text">Payment</span>
+  </div>
+  <div class="step upcoming">
+    <i class="fa-regular fa-circle-check me-1"></i>
+    <span class="step-text">Confirmation</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row g-4">
+    <!-- LEFT SIDE -->
+    <div class="col-md-6">
+      <!-- Hero Image -->
+      <div class="hero-img mb-4">
+        <img
+          src="<%= listing.image.url %>"
+          alt="listing_image"
+          class="img-fluid"
+        />
+        <div class="hero-text">
+          <p class="mb-0 fw-bold">
+            <%= listing.title %> | <%= listing.location %>, <%= listing.country
+            %>
+          </p>
+        </div>
+      </div>
+
+      <!-- Trip Summary -->
+      <div class="card trip-summary p-3 mb-4">
+        <h5 class="fw-bold">Your Trip Summary</h5>
+        <hr />
+        <p>
+          <strong>Check-in:</strong><span><%= reservation.checkInDate %></span>
+        </p>
+        <p>
+          <strong>Check-out:</strong
+          ><span><%= reservation.checkOutDate %></span>
+        </p>
+        <p><strong>Guests:</strong><span><%= reservation.guests %></span></p>
+      </div>
+      <div class="card trip-summary p-3 mt-2">
+        <h5 class="fw-bold">Price Breakdown</h5>
+        <hr />
+        <p>
+          <strong> Base Price:</strong
+          ><span
+            >₹<%= reservation.totalPriceBeforeTax.toLocaleString("en-IN")
+            %></span
+          >
+        </p>
+        <p>
+          <strong> Taxes:</strong
+          ><span>₹<%= reservation.taxAmount.toLocaleString("en-IN") %></span>
+        </p>
+        <hr />
+        <p class="fw-bold">
+          Total Payable:
+          <span> ₹<%= reservation.finalTotal.toLocaleString("en-IN") %></span>
+        </p>
+      </div>
+    </div>
+    <!-- RIGHT SIDE -->
+    <div class="col-md-6">
+      <form
+        id="payForm"
+        action="/reservations/confirm"
+        method="POST"
+        novalidate
+      >
+        <!-- Payment Method -->
+        <div class="card payment-card mb-4 p-3">
+          <h5 class="fw-bold">Select Payment Method</h5>
+          <!-- Card -->
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="paymentMethod"
+              id="card"
+              value="card"
+              data-bs-toggle="collapse"
+              data-bs-target="#cardDetails"
+              required
+            />
+            <label class="form-check-label fw-bold" for="card"
+              >Credit / Debit Card <i class="fa-regular fa-credit-card"></i
+            ></label>
+          </div>
+          <div id="cardDetails" class="collapse mt-2">
+            <div class="border rounded p-3">
+              <div class="mb-3">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cardNumber"
+                  placeholder="1234 5678 9012 3456"
+                />
+                <div class="invalid-feedback">
+                  Enter a valid 16-digit card number.
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="expiry" class="form-label">Expiry Date</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="expiry"
+                    placeholder="MM/YY"
+                  />
+                  <div class="invalid-feedback">
+                    Enter a valid expiry (MM/YY).
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cvv" class="form-label">CVV</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="cvv"
+                    placeholder="•••"
+                  />
+                  <div class="invalid-feedback">Enter a valid 3-digit CVV.</div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="cardName" class="form-label">Name on Card</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cardName"
+                  placeholder="Full Name"
+                />
+                <div class="invalid-feedback">Enter cardholder name.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- UPI -->
+          <div class="form-check mt-3">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="paymentMethod"
+              id="upi"
+              value="upi"
+              data-bs-toggle="collapse"
+              data-bs-target="#upiDetails"
+              required
+            />
+            <label class="form-check-label fw-bold" for="upi">UPI </label>
+            <i class="fab fa-google-pay fa-2x"></i>
+          </div>
+          <div id="upiDetails" class="collapse mt-2">
+            <div class="border rounded p-3">
+              <div class="mb-3">
+                <label for="upiId" class="form-label">UPI ID</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="upiId"
+                  placeholder="example@upi"
+                />
+                <div class="invalid-feedback">Enter a valid UPI ID.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Netbanking -->
+          <div class="form-check mt-3">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="paymentMethod"
+              id="netbanking"
+              value="netbanking"
+              data-bs-toggle="collapse"
+              data-bs-target="#netbankingDetails"
+              required
+            />
+            <label class="form-check-label fw-bold" for="netbanking"
+              >Net Banking <i class="fas fa-university"></i>
+            </label>
+          </div>
+          <div id="netbankingDetails" class="collapse mt-2">
+            <div class="border rounded p-3">
+              <div class="mb-3">
+                <label for="bank" class="form-label">Select Bank</label>
+                <select id="bank" class="form-select">
+                  <option selected disabled>Choose...</option>
+                  <option>HDFC Bank</option>
+                  <option>ICICI Bank</option>
+                  <option>SBI</option>
+                  <option>Axis Bank</option>
+                </select>
+                <div class="invalid-feedback">Please select a bank.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-pay">Pay Now</button>
+      </form>
+
+      <!-- Right Side Notes -->
+      <div class="info-card mt-4 p-3">
+        <h6 class="fw-bold">Cancellation Policy</h6>
+        <p class="mb-1">Free cancellation up to 7 days before check-in.</p>
+        <p class="mb-0">
+          <i class="fa-solid fa-triangle-exclamation"></i> After that, 25% of
+          the total payable amount will be refunded.
+        </p>
+      </div>
+
+      <div class="info-card mt-3 p-3">
+        <h6 class="fw-bold">Guest Guidelines</h6>
+        <ul class="mb-0">
+          <li>Please respect house rules and timings.</li>
+          <li>Treat the property as if it were your own home.</li>
+          <li>Be kind and considerate towards pets, if any.</li>
+          <li>Maintain a polite and respectful tone with hosts & neighbors.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/payValidation.js"></script>
+<script src="/js/paymentToggle.js"></script>
+<script src="/js/script.js"></script>

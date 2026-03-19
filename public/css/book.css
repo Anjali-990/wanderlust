@@ -1,0 +1,217 @@
+/* General body */
+body {
+  font-family: "Montserrat", sans-serif !important;
+  background-color: white;
+  color: #1d3557;
+  margin: 20px;
+}
+
+/* Section container */
+.section {
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+/*breadcrumb*/
+.stepper {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.step {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+/* Completed Steps */
+.step.done {
+  background-color: #1d3557; /* dark navy */
+  color: white !important;
+  font-size: 1rem !important;
+}
+/* Current Step */
+.step.active {
+  background-color: #fff;
+  color: #1a1a40;
+  font-weight: 700;
+  font-size: 1rem !important;
+  border: 2px solid #1d3557;
+}
+
+/* Upcoming Steps */
+.step.upcoming {
+  background-color: #fff;
+  color: #6c757d; /* gray */
+  border: 1px solid #ddd;
+  font-size: 1rem !important;
+}
+/* For medium and small screens (md < 992px) → icons only */
+@media (max-width: 991.98px) {
+  .step-text {
+    display: none !important;
+  }
+
+  .step {
+    padding: 8px;
+    border-radius: 50%;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  }
+
+  .step i {
+    margin-right: 0 !important;
+    font-size: 18px;
+  }
+}
+
+/* Headings */
+h2 {
+  font-weight: bold;
+  color: #1d3557;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-weight: bold;
+  text-decoration: underline black solid;
+  margin-bottom: 15px;
+}
+
+/* Row for labels and values */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* Custom Edit Button */
+.btn-edit {
+  background: linear-gradient(135deg, #2a9d8f, #20c997); /* Teal gradient */
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 128, 128, 0.3);
+}
+
+.btn-edit:hover {
+  background: linear-gradient(135deg, #20c997, #2a9d8f);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 128, 128, 0.4);
+}
+
+/* Pay Now Button - Coral */
+.btn-pay {
+  background: #e63946 !important; /* coral */
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-pay:hover {
+  background: #bd1f1f !important;
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(255, 111, 97, 0.4);
+}
+.total-label {
+  font-size: 1.2rem; /* slightly bigger */
+  font-weight: 600;
+  color: #d32f2f; /* red to match Pay button */
+}
+
+.total-amount {
+  font-size: 1.4rem; /* even bigger for the number */
+  font-weight: bold;
+}
+
+/* Horizontal line */
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+/* Bold style for total */
+.row[style*="font-weight: bold"] {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* === Card Styling === */
+.card {
+  padding: 25px; /* increase padding */
+}
+
+.card h5,
+.card h6,
+.card p {
+  margin-bottom: 12px; /* consistent spacing */
+}
+
+.card-custom {
+  border-radius: 12px;
+  min-height: 300px;
+  width: 100%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-custom:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* === Badge Styling === */
+.badge-pill {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  font-size: 0.85em;
+  font-weight: 600;
+  border-radius: 50px;
+  background: #20c997;
+  color: white;
+}
+
+/* === Icon Circles === */
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  margin-right: 8px;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.6), 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient themes */
+.icon-coral {
+  background: linear-gradient(135deg, coral, #ff9e80);
+}
+.icon-teal {
+  background: linear-gradient(135deg, teal, #20c997);
+}
+.icon-navy {
+  background: linear-gradient(135deg, navy, #5a5af5);
+}

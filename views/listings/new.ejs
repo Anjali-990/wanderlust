@@ -1,0 +1,384 @@
+<% layout("/layouts/boilerplate") -%>
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="listing-form">
+      <h3>Create New Listing</h3>
+      <form
+        method="POST"
+        action="/listings"
+        enctype="multipart/form-data"
+        class="needs-validation"
+        novalidate
+      >
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            name="listing[title]"
+            type="text"
+            placeholder="Add a catchy title"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please enter valid title</div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            name="listing[description]"
+            class="form-control"
+            required
+          ></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please enter valid description</div>
+        </div>
+
+        <!-- Upload Image -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Image</label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            class="form-control"
+            accept="image/*"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please upload an image!</div>
+        </div>
+
+        <!-- Price + Country (inline fields) -->
+        <div class="inline-fields">
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              name="listing[price]"
+              id="price"
+              placeholder="1000"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please enter valid price</div>
+          </div>
+          <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input
+              name="listing[country]"
+              id="country"
+              placeholder="India"
+              type="text"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Country name not found!</div>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input
+            name="listing[location]"
+            id="location"
+            placeholder="Jaipur, Rajasthan"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Location not found!</div>
+        </div>
+
+        <!-- Amenities -->
+        <div class="mb-3">
+          <label class="form-label fw-bold"
+            >Offering Services / Amenities</label
+          >
+          <div class="row row-cols-2 row-cols-md-3 g-2">
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Wi-Fi"
+                  id="wifi"
+                />
+                <label class="form-check-label" for="wifi"
+                  ><i class="fa-solid fa-wifi"></i> Wi-Fi</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Pool"
+                  id="pool"
+                />
+                <label class="form-check-label" for="pool"
+                  ><i class="fa-solid fa-water-ladder"></i> Pool</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Parking"
+                  id="parking"
+                />
+                <label class="form-check-label" for="parking"
+                  ><i class="fa-solid fa-square-parking"></i> Parking</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Air Conditioning"
+                  id="ac"
+                />
+                <label class="form-check-label" for="ac"
+                  ><i class="fa-solid fa-fan"></i> Air Conditioning</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Kitchen"
+                  id="kitchen"
+                />
+                <label class="form-check-label" for="kitchen"
+                  ><i class="fa-solid fa-kitchen-set"></i> Kitchen</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="TV"
+                  id="tv"
+                />
+                <label class="form-check-label" for="tv"
+                  ><i class="fa-solid fa-tv"></i> TV</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Washing Machine"
+                  id="wm"
+                />
+                <label class="form-check-label" for="wm"
+                  ><i class="fa-solid fa-jug-detergent"></i> Washing
+                  Machine</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Workplace"
+                  id="workplace"
+                />
+                <label class="form-check-label" for="workplace"
+                  ><i class="fa-solid fa-chair"></i> Workplace</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Pet Friendly"
+                  id="pet"
+                />
+                <label class="form-check-label" for="pet"
+                  ><i class="fa-solid fa-paw"></i> Pet Friendly</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Breakfast"
+                  id="breakfast"
+                />
+                <label class="form-check-label" for="breakfast"
+                  ><i class="fa-solid fa-bowl-food"></i> Breakfast</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Gym"
+                  id="gym"
+                />
+                <label class="form-check-label" for="gym"
+                  ><i class="fa-solid fa-dumbbell"></i> Gym</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Spa"
+                  id="spa"
+                />
+                <label class="form-check-label" for="spa"
+                  ><i class="fa-solid fa-spa"></i> Spa</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Balcony"
+                  id="balcony"
+                />
+                <label class="form-check-label" for="balcony"
+                  ><i class="fa-solid fa-building"></i> Balcony</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Fireplace"
+                  id="fireplace"
+                />
+                <label class="form-check-label" for="fireplace"
+                  ><i class="fa-solid fa-fire"></i> Fireplace</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Garden"
+                  id="garden"
+                />
+                <label class="form-check-label" for="garden"
+                  ><i class="fa-solid fa-leaf"></i> Garden</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Fire Extinguisher"
+                  id="fire_extinguisher"
+                />
+                <label class="form-check-label" for="fire_extinguisher"
+                  ><i class="fa-solid fa-fire-extinguisher"></i> Fire
+                  Extinguisher</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Smoke Alarm"
+                  id="smoke_alarm"
+                />
+                <label class="form-check-label" for="smoke_alarm"
+                  ><i class="fa-solid fa-bell"></i> Smoke Alarm</label
+                >
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="listing[amenities]"
+                  value="Mini Bar"
+                  id="minibar"
+                />
+                <label class="form-check-label" for="minibar"
+                  ><i class="fa-solid fa-wine-bottle"></i> Mini Bar</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-dark add-btn mt-3">Add</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/js/script.js"></script>
