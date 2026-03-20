@@ -43,7 +43,7 @@ module.exports.createListing = async (req, res, next) => {
     }
 
     listingData.image = {
-      url: `/uploads/${req.file.filename}`,
+      url: req.file.path, //Cloudinary URL
       filename: req.file.filename,
     };
 
@@ -99,7 +99,7 @@ module.exports.updateListing = async (req, res) => {
     if (req.file) {
       listingData.image = {
         filename: req.file.filename,
-        url: `/uploads/${req.file.filename}`,
+        url: req.file.path, // Cloudinary URL
       };
     }
 
