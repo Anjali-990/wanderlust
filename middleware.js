@@ -1,8 +1,7 @@
 const Listing = require("./models/listing");
 const Review = require("./models/review.js");
 const ExpressError = require("./utils/ExpressError.js");
-const { listingSchema } = require("./schema.js");
-const { reviewSchema } = require("./schema.js");
+const { listingSchema, reviewSchema } = require("./schema.js");
 
 // Define storage location and filename
 const multer = require("multer");
@@ -10,8 +9,6 @@ const { storage } = require("./config/cloudinary");
 
 const upload = multer({ storage });
 module.exports.upload = upload;
-
-const path = require("path");
 
 //login check
 module.exports.isloggedIn = (req, res, next) => {
