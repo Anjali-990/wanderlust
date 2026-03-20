@@ -6,22 +6,12 @@ const { reviewSchema } = require("./schema.js");
 
 // Define storage location and filename
 const multer = require("multer");
-const path = require("path");
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads"); // folder where images will be saved
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, file.fieldname + "-" + uniqueSuffix + ext);
-  },
-});
+const { storage } = require("./config/cloudinary");
 
 const upload = multer({ storage });
+module.exports.upload = upload;
 
-module.exports = { upload };
+const path = require("path");
 
 //login check
 module.exports.isloggedIn = (req, res, next) => {
